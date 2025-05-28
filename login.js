@@ -59,7 +59,8 @@ function reloadDOM(){
                 password: passInput.value
         })
             if(error){
-                alert("erro")
+                alert("Email or Password is incorrect")
+                console.log(error)
             }else{
                 //redireciona para pag principal 
                 alert("guh")
