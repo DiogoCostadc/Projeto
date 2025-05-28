@@ -60,6 +60,7 @@ function reloadDOM(){
         })
             if(error){
                 alert("erro")
+                console.log(error)
             }else{
                 //redireciona para pag principal 
                 alert("guh")
