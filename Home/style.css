@@ -50,10 +50,12 @@ html {
   }
   .profile{
     width: 30%;
+    align-self: center;
   }
   .search-item{
     padding: 28px;
-    
+    display: flex;
+    flex-wrap: nowrap 
   }
 
   .maincolor{
@@ -61,4 +63,19 @@ html {
   }
   .secondcolor{
     color: #FF5920;
+  }
+
+  .search-box{
+    height: 30px;
+  }
+
+  .img{
+    margin-left: 10px;
+    max-width: 30px;
+    max-height: 30px;
+  }
+  .img2{
+    max-width: 50px;
+    max-height: 50px;
+    
   }
