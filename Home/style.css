@@ -1,0 +1,57 @@
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #e0e0e0;
+}
+
+.phone-screen {
+    width: 375px;
+    height: 667px;
+    margin: 20px auto;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+  }
+
+  .header-profile{
+    border-style: solid;
+    height: 13%;
+    display: flex;
+    flex-wrap: nowrap 
+  }
+  .main-body{
+    border-style: solid;
+    height: 72%;
+  }
+  .bottom-menu{
+    border-style: solid;
+    height: 15%;
+    display: flex;
+    flex-wrap: nowrap ;
+  }
+  .item{
+    width: 100%;
+    border-style: solid;
+  }
+  .header{
+    border-style: solid;
+  }
+  .search{
+    width: 70%;
+    
+    
+  }
+  .profile{
+    width: 30%;
+  }
+  .search-item{
+    padding: 28px;
+    
+  }
