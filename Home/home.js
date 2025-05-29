@@ -12,18 +12,18 @@ let but = document.getElementById("but")
 
 but.addEventListener("click", async() =>{   //buscar planos
   
-   let user = await supabase
+   let user = await supabase        //buscar user
     .from('User')
     .select()
     .eq("user_id", uid)
     let userfinal = user.data[0].id
 
     let plano = await supabase
-    .from("User-Planos")
+    .from("User-Planos")            //procura planos com o id do user
     .select()
     .eq("user", userfinal)
    
-    let array = []
+    let array = []                  //id dos planos num array
     let planos = plano.data
 
     console.log(plano.data)
@@ -31,14 +31,23 @@ but.addEventListener("click", async() =>{   //buscar planos
     planos.forEach(planos => {
         console.log(planos.planos)
 
-        array.push(planos.planos)
+        array.push(planos.planos)       //mete os ids no array
         console.log(array)
     });
 
     let planoteste = await supabase
-    .from("Planos")
+    .from("Planos")                     //procura info de cada plano do array
     .select()
     .in('id', array)
     console.log(planoteste.data)
+
+    let array2 = planoteste.data
+
+    array2.forEach(planos => {              //cria butao como nome de cada array
+        console.log(planos.nome)
+
+        mainbody.innerHTML += `<button type="button">${planos.nome}</button>`
+        
+    });
     
 })
