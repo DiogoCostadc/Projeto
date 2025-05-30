@@ -22,11 +22,11 @@ html {
 /* ----------------- */
 
 .top-menu{
-  height: 13%;
+  height: 15%;
   display: flex;
 }
 .main-body{
-  height: 72%;
+  height: 70%;
 }
 .bottom-menu{
   height: 15%;
@@ -83,7 +83,7 @@ html {
   margin: 12px;
 }
 .toolbaricons{
-  width: 65%;
+  width: 85%;
   height: auto;
   margin: auto;
   border-radius: 100%;
