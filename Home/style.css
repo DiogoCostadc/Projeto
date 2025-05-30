@@ -47,25 +47,26 @@ html {
   align-items: flex-end;
 }
 .item{
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
+  text-align: center;
   width: 100%;
   height: 100%;
 }
 
-/* ----------------- */
+/* GUI setups */
 
 .placeholderborders{
   border-style: solid;
 }
 .searchbar{
-  height: 30px;
+  height: 25px;
   margin: 12px;
   background: transparent;
   border: none;
   color: white;
-  border-bottom: 2px solid white;
+  border-bottom: 3px solid white;
 }
 ::placeholder{
   color: white;
@@ -82,18 +83,43 @@ html {
   margin: 12px;
 }
 .toolbaricons{
-  width: 60%;
+  width: 65%;
   height: auto;
   margin: auto;
   border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.news-board{
+  border: #FF5920;
+  border-radius: 8px;
+  border-width: 4px;
+  border-style: solid;
+  height: 23%;
+  padding: 4px;
 }
 
-
-/* ----------------- */
+/* Decorações */
 
 .maincolor{
   background-color: #E23C03;
 }
 .secondcolor{
   background-color: #FF5920;
+}
+.text-maincolor{
+  color: #E23C03;
+}
+.text-secondcolor{
+  color: #FF5920;
+}
+.screen-space{
+  margin: 12px;
+  height: 100%;
+}
+a{
+  color: white;
+  text-decoration: none;
+  font-size:14px;
 }
