@@ -8,6 +8,8 @@ console.log(uid)
 
 let mainbody = document.getElementById("main-body")
 let myplans = document.getElementById("but")
+let createplan = document.getElementById("create")
+
 
 myplans.addEventListener("click", async () => {   //buscar planos
 
@@ -15,7 +17,7 @@ myplans.addEventListener("click", async () => {   //buscar planos
         .from('User')
         .select()
         .eq("user_id", uid)
-    let userfinal = user.data[0].id
+     let userfinal = user.data[0].id
 
     let planos = await supabase
         .from("User-Planos")            //procura planos com o id do user
@@ -102,4 +104,31 @@ myplans.addEventListener("click", async () => {   //buscar planos
         //  console.log(event.srcElement.id)
     //}
 
+})
+
+createplan.addEventListener("click", async()=>{
+
+let user = await supabase        //buscar user
+        .from('User')
+        .select()
+        .eq("user_id", uid)
+     let userfinal = user.data[0].id
+
+    let planname = prompt("Nome do plano")
+    console.log(userfinal)
+
+    let addplan = await supabase
+        .from('Planos')
+        .insert({nome:planname})
+        .select()
+    let planid = addplan.data[0].id
+        
+
+    let add = await supabase
+    .from('User-Planos')
+    .insert({user: userfinal, planos: planid})
+    .select()
+    console.log(add.data)
+    localStorage.setItem("idplan", planid)
+    window.location.replace("../CreatePlan/create.html")
 })
