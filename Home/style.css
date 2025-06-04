@@ -106,6 +106,7 @@ html {
 .cols{
   display: grid;
   width: 50%;
+  height:fit-content;
   row-gap: 8px;
 }
 .plan{
