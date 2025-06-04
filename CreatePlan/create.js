@@ -7,7 +7,7 @@ let addbut = document.getElementById("addbut")
 let form = document.getElementById("testform")
 let exe = document.getElementById("exer")
 let exlist = document.getElementById("exlist")
-let planid = localStorage.getItem("idplan")
+let planid = localStorage.getItem("CreateIdPlan")
 
 //------------------------------------------------------
 let token = await supabase.auth.getUser()
