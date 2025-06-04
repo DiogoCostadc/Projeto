@@ -113,31 +113,35 @@ async function Render() {
         
         div1.addEventListener("click", function(event) {        
             let btnid = event.target.id
-            console.log(btnid)                  
-            teste()
-            async function teste(){
-                let planoteste = await supabase     //procura na planos-exercicios por exercicios no id do plano
-                .from("Plano-Exercicio")
-                .select()
-                .eq("plano", btnid)
-            console.log(planoteste.data)
+            console.log(btnid)          
             
-            let exerarray = []              //guarda o id dos exercicios do plano
+            localStorage.setItem("currentPlan", btnid)
+            window.location.replace("../Myplan/myplan.html")
 
-            planoteste.data.forEach(exercicio => {
-                console.log(exercicio.exercicio)
-                exerarray.push(exercicio.exercicio)
-            });
-            console.log(exerarray)
+            //teste()
+            //async function teste(){
+            //    let planoteste = await supabase     //procura na planos-exercicios por exercicios no id do plano
+            //    .from("Plano-Exercicio")
+            //    .select()
+            //    .eq("plano", btnid)
+            //console.log(planoteste.data)
+            
+          //  let exerarray = []              //guarda o id dos exercicios do plano
 
-            let exercicioinfo = await supabase      //procura info do exercicio
-            .from("Exercicio")
-            .select()
-            .in("id", exerarray)
-            console.log(exercicioinfo.data)
+            //planoteste.data.forEach(exercicio => {
+             //   console.log(exercicio.exercicio)
+             //   exerarray.push(exercicio.exercicio)
+            //});
+            //console.log(exerarray)
+
+            //let exercicioinfo = await supabase      //procura info do exercicio
+            //.from("Exercicio")
+            //.select()
+            //.in("id", exerarray)
+            //console.log(exercicioinfo.data)
 
             
-            }
+            
         }) 
     }
 }
