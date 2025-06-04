@@ -86,27 +86,32 @@ async function Render() {
         console.log(plan.nome);
         console.log(plan);
 
-        let btn = document.createElement("button");
-        btn.id = plan.id;
-        btn.textContent = plan.nome;
+        let label = document.createElement("label");
+        label.textContent = plan.nome;
+        
+        let click = document.createElement("a")
+        
+        let div1 = document.createElement("div")
+        div1.id = plan.id
+        div1.classList.add("plan")
+        let div2 = document.createElement("div")
+        div2.classList.add("plan-gui")
+        
+        div2.appendChild(label)
+        div1.appendChild(div2)
+        click.appendChild(div1)
 
-        let planlayout = `<a href="#">
-                            <div class="plan">
-                                <div class="plan-gui">
-                                    <label>
-                                        ${plan.nome}
-                                    </label>
-                                </div>
-                            </div>
-                        </a>`
+        let planlayout = click
+
         if ((i % 2) == 0 ){
-            col1.innerHTML += planlayout
+            col1.appendChild(planlayout)
         }
         else{
-            col2.innerHTML += planlayout
+            col2.appendChild(planlayout)
         }
-
-        btn.addEventListener("click", function(event) {        
+        
+        
+        div1.addEventListener("click", function(event) {        
             let btnid = event.target.id
             console.log(btnid)                  
             teste()
