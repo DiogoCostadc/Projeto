@@ -62,8 +62,7 @@ function reloadDOM(){
                 alert("Email or Password is incorrect")
                 console.log(error)
             }else{
-                //redireciona para pag principal 
-                alert("guh")
+                //redireciona para a página principal 
                 window.location.replace("../Home/index.html")
             }
         })
