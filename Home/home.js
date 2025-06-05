@@ -15,6 +15,7 @@ document.querySelectorAll('#change').forEach(link => {
     });
 });
 
+let profilebut = document.getElementById("profileclick")
 CurrentPage()
 
 function CurrentPage(){
@@ -242,7 +243,7 @@ array2.forEach(planos => {              //cria butao como nome de cada array
 
 createplan.addEventListener("click", async()=>{
 
-let user = await supabase        //buscar user
+    let user = await supabase        //buscar user
         .from('User')
         .select()
         .eq("user_id", uid)
@@ -264,5 +265,9 @@ let user = await supabase        //buscar user
     .select()
     console.log(add.data)
     localStorage.setItem("CreateIdPlan", planid)
-    window.location.replace("../CreatePlan/create.html")
+    window.location.replace("../CreatePlan/index.html")
+})
+
+profilebut.addEventListener("click", async()=>{
+    
 })

@@ -9,19 +9,26 @@
 <body>
     <div class="phone-screen"> <!-- screen -->
         <div class="top-menu maincolor"> <!-- top GUI with the main color -->
-            <div class="search-area"> <!-- search -->
-                <input type="text" placeholder="Search:" class="searchbar">
-                <img src="../Img/search.png" class="icon">
-            </div>
-            <div class="profile-area"> <!-- profile -->
-                <a href="#" id="profileclick">
-                    <img src="https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-300x300.png" class="profile">
-                </a>
+            <div class="profile-area"> 
+                <img src="https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-300x300.png" class="profile">
             </div>
         </div>
         
         <div class="main-body" id="screen-body"> <!-- Body -->
-            
+            <div class="screen-space" id="main-body">
+                <button id="addbut" type="button">adicionar exercicio</button>
+                <div id="testform">
+                    <select name="exe" id="exer">
+                        
+                    </select>
+                    <div id="exlist">
+                    
+                    </div>
+                    <div>
+                        <button id="but" type="button">confirmar</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="bottom-menu maincolor"> <!-- bottom GUI with the main color -->
@@ -45,6 +52,6 @@
             </div>
         </div>
     </div>
-    <script type="module" src="home.js"></script> 
+    <script type="module" src="create.js"></script> 
 </body>
 </html>

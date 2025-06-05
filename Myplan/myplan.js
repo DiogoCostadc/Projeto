@@ -64,9 +64,21 @@ let info = exercicioinfo.data[i]
 }
 
 share.addEventListener("click", async()=>{
+    let {data, error} = await supabase
+    .from("Partilhados")
+    .select()
+    .eq("plano", currentPlan)
+    console.log(data)
+    if(data.length > 0){
+
+        alert("Plano Já partilhado")
+
+    }else{
     let shareplan = await supabase
     .from("Partilhados")
     .insert({plano: currentPlan})
+    alert("Plano Partilhado")
+    }
 })
 
 backbut.addEventListener("click", async()=>{
