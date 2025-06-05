@@ -63,13 +63,13 @@ async function Render() {
     let array = []                  //id dos planos num array
     let planosid = planos.data
 
-    console.log(planos.data)
+    //console.log(planos.data)
 
     planosid.forEach(planosid => {
-        console.log(planosid.planos)
+        //console.log(planosid.planos)
 
         array.push(planosid.planos)       //mete os ids no array
-        console.log(array)
+        //console.log(array)
     });
 
     let planoinfo = await supabase
@@ -83,8 +83,8 @@ async function Render() {
 
     for (let i = 0; i < array2.length; i++) {       //adiciona os planos num butão
         let plan = array2[i];
-        console.log(plan.nome);
-        console.log(plan);
+        //console.log(plan.nome);
+        //console.log(plan);
 
         let label = document.createElement("label");
         label.textContent = plan.nome;
