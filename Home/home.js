@@ -47,102 +47,170 @@ function CurrentPage(){
 }
 
 async function Render() {
-    let col1 = document.getElementById("col-1")
-    let col2 = document.getElementById("col-2")
-    let user = await supabase        //buscar user
-    .from('User')
-    .select()
-    .eq("user_id", uid)
-    let userfinal = user.data[0].id
-
-    let planos = await supabase
-        .from("User-Planos")            //procura planos com o id do user
+    if (page == 1){
+        let col1 = document.getElementById("col-1")
+        let col2 = document.getElementById("col-2")
+        let user = await supabase        //buscar user
+        .from('User')
         .select()
-        .eq("user", userfinal)
+        .eq("user_id", uid)
+        let userfinal = user.data[0].id
 
-    let array = []                  //id dos planos num array
-    let planosid = planos.data
+        let planos = await supabase
+            .from("Partilhados")            //procura planos com o id do user
+            .select()
 
-    //console.log(planos.data)
+        let array = []                  //id dos planos num array
+        let planosid = planos.data
 
-    planosid.forEach(planosid => {
-        //console.log(planosid.planos)
+        //console.log(planos.data)
 
-        array.push(planosid.planos)       //mete os ids no array
-        //console.log(array)
-    });
+        planosid.forEach(planosid => {
+            //console.log(planosid.planos)
 
-    let planoinfo = await supabase
-        .from("Planos")                     //procura info de cada plano do array
+            array.push(planosid.plano)       //mete os ids no array
+            //console.log(array)
+        });
+
+        let planoinfo = await supabase
+            .from("Planos")                     //procura info de cada plano do array
+            .select()
+            .in('id', array)
+        console.log(planoinfo.data)
+
+        let array2 = planoinfo.data
+
+        for (let i = 0; i < array2.length; i++) {       //adiciona os planos num butão
+            let plan = array2[i];
+            //console.log(plan.nome);
+            //console.log(plan);
+
+            let label = document.createElement("label");
+            label.textContent = plan.nome;
+            
+            let click = document.createElement("a")
+            
+            let div1 = document.createElement("div")
+            div1.id = plan.id
+            div1.classList.add("plan")
+            let div2 = document.createElement("div")
+            div2.classList.add("plan-gui")
+            
+            div2.appendChild(label)
+            div1.appendChild(div2)
+            click.appendChild(div1)
+
+            let planlayout = click
+
+            if ((i % 2) == 0 ){
+                col1.appendChild(planlayout)
+            }
+            else{
+                col2.appendChild(planlayout)
+            }
+
+            div1.addEventListener("click", function(event) {        
+                let btnid = event.target.id
+                console.log(btnid)          
+                
+                localStorage.setItem("currentPlan", btnid)
+                window.location.replace("../Myplan/myplan.html")
+            }) 
+        }
+    }
+    else{
+        let col1 = document.getElementById("col-1")
+        let col2 = document.getElementById("col-2")
+        let user = await supabase        //buscar user
+        .from('User')
         .select()
-        .in('id', array)
-    console.log(planoinfo.data)
+        .eq("user_id", uid)
+        let userfinal = user.data[0].id
 
-    let array2 = planoinfo.data
+        let planos = await supabase
+            .from("User-Planos")            //procura planos com o id do user
+            .select()
+            .eq("user", userfinal)
 
+        let array = []                  //id dos planos num array
+        let planosid = planos.data
 
-    for (let i = 0; i < array2.length; i++) {       //adiciona os planos num butão
-        let plan = array2[i];
-        //console.log(plan.nome);
-        //console.log(plan);
+        //console.log(planos.data)
 
-        let label = document.createElement("label");
-        label.textContent = plan.nome;
-        
-        let click = document.createElement("a")
-        
-        let div1 = document.createElement("div")
-        div1.id = plan.id
-        div1.classList.add("plan")
-        let div2 = document.createElement("div")
-        div2.classList.add("plan-gui")
-        
-        div2.appendChild(label)
-        div1.appendChild(div2)
-        click.appendChild(div1)
+        planosid.forEach(planosid => {
+            //console.log(planosid.planos)
 
-        let planlayout = click
+            array.push(planosid.planos)       //mete os ids no array
+            //console.log(array)
+        });
 
-        if ((i % 2) == 0 ){
-            col1.appendChild(planlayout)
+        let planoinfo = await supabase
+            .from("Planos")                     //procura info de cada plano do array
+            .select()
+            .in('id', array)
+        console.log(planoinfo.data)
+
+        let array2 = planoinfo.data
+
+        for (let i = 0; i < array2.length; i++) {       //adiciona os planos num butão
+            let plan = array2[i];
+            //console.log(plan.nome);
+            //console.log(plan);
+
+            let label = document.createElement("label");
+            label.textContent = plan.nome;
+            
+            let click = document.createElement("a")
+            
+            let div1 = document.createElement("div")
+            div1.id = plan.id
+            div1.classList.add("plan")
+            let div2 = document.createElement("div")
+            div2.classList.add("plan-gui")
+            
+            div2.appendChild(label)
+            div1.appendChild(div2)
+            click.appendChild(div1)
+
+            let planlayout = click
+
+            if ((i % 2) == 0 ){
+                col1.appendChild(planlayout)
+            }
+            else{
+                col2.appendChild(planlayout)
+            }
+
+            div1.addEventListener("click", function(event) {        
+                let btnid = event.target.id
+                console.log(btnid)          
+                
+                localStorage.setItem("currentPlan", btnid)
+                window.location.replace("../Myplan/myplan.html")
+
+                //teste()
+                //async function teste(){
+                //    let planoteste = await supabase     //procura na planos-exercicios por exercicios no id do plano
+                //    .from("Plano-Exercicio")
+                //    .select()
+                //    .eq("plano", btnid)
+                //console.log(planoteste.data)
+                
+            //  let exerarray = []              //guarda o id dos exercicios do plano
+
+                //planoteste.data.forEach(exercicio => {
+                //   console.log(exercicio.exercicio)
+                //   exerarray.push(exercicio.exercicio)
+                //});
+                //console.log(exerarray)
+
+                //let exercicioinfo = await supabase      //procura info do exercicio
+                //.from("Exercicio")
+                //.select()
+                //.in("id", exerarray)
+                //console.log(exercicioinfo.data)
+            }) 
         }
-        else{
-            col2.appendChild(planlayout)
-        }
-        
-        
-        div1.addEventListener("click", function(event) {        
-            let btnid = event.target.id
-            console.log(btnid)          
-            
-            localStorage.setItem("currentPlan", btnid)
-            window.location.replace("../Myplan/myplan.html")
-
-            //teste()
-            //async function teste(){
-            //    let planoteste = await supabase     //procura na planos-exercicios por exercicios no id do plano
-            //    .from("Plano-Exercicio")
-            //    .select()
-            //    .eq("plano", btnid)
-            //console.log(planoteste.data)
-            
-          //  let exerarray = []              //guarda o id dos exercicios do plano
-
-            //planoteste.data.forEach(exercicio => {
-             //   console.log(exercicio.exercicio)
-             //   exerarray.push(exercicio.exercicio)
-            //});
-            //console.log(exerarray)
-
-            //let exercicioinfo = await supabase      //procura info do exercicio
-            //.from("Exercicio")
-            //.select()
-            //.in("id", exerarray)
-            //console.log(exercicioinfo.data)
-
-            
-            
-        }) 
     }
 }
 
