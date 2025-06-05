@@ -6,6 +6,7 @@ let currentPlan = localStorage.getItem("currentPlan")
 let header = document.getElementById("header")
 let body = document.getElementById("list")
 let share = document.getElementById("share")
+let backbut = document.getElementById("backbut")
 
 let plano = await supabase
 .from("Planos")
@@ -66,4 +67,8 @@ share.addEventListener("click", async()=>{
     let shareplan = await supabase
     .from("Partilhados")
     .insert({plano: currentPlan})
+})
+
+backbut.addEventListener("click", async()=>{
+    window.location.replace("../Home/index.html")
 })

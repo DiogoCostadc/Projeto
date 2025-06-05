@@ -8,7 +8,8 @@ let form = document.getElementById("testform")
 let exe = document.getElementById("exer")
 let exlist = document.getElementById("exlist")
 let planid = localStorage.getItem("CreateIdPlan")
-
+let arrayexercicio = []
+let but = document.getElementById("but")
 //------------------------------------------------------
 let token = await supabase.auth.getUser()
 let uid = token.data.user.id
@@ -58,11 +59,11 @@ for (let i = 0 ; i < exerarray.length ; i++){
  exe.addEventListener("change", function(event){
     let optid = event.target.value
     console.log(optid)
-
+  arrayexercicio.push(optid)
     let exinfoname 
     let exinfodesc 
     let exinfoobs
-
+console.log(arrayexercicio)
     teste()
    async function teste() {
         let ex = await supabase
@@ -75,9 +76,7 @@ for (let i = 0 ; i < exerarray.length ; i++){
         exinfodesc = ex.data[0].desc
         exinfoobs = ex.data[0].obs
 
-        let insert = await supabase
-        .from('Plano-Exercicio')
-        .insert({plano: planid, exercicio : optid})
+        
         
       exlist.innerHTML += `<p>nome: ${exinfoname}, desc : ${exinfodesc}, obs : ${exinfoobs}</p>`
    }
@@ -86,3 +85,20 @@ for (let i = 0 ; i < exerarray.length ; i++){
 
 
 })
+
+but.addEventListener("click", async()=>{
+
+  console.log(arrayexercicio)
+  let arraytest = []
+  arrayexercicio.forEach(exerID => {
+    arraytest.push({plano: planid, exercicio : exerID})
+  });
+  console.log(arraytest)
+  let insert = await supabase
+  .from('Plano-Exercicio')
+  .insert(arraytest)
+
+  alert("Plano criado")
+  window.location.replace("../Home/index.html")
+})
+
