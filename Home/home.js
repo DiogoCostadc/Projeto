@@ -269,5 +269,5 @@ createplan.addEventListener("click", async()=>{
 })
 
 profilebut.addEventListener("click", async()=>{
-    
+    window.location.replace("../Profile/index.html")
 })

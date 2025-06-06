@@ -146,3 +146,24 @@ a{
   text-decoration: none;
   font-size:14px;
 }
+.Lista-item{
+  border: solid 2px #E23C03;
+  border-radius: 8px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 8px;
+  background-color: white;
+  gap: 20px;
+}
+.nome-button{
+  display: grid;
+  gap: 8px;
+}
+label.nome-button{
+  font-size: 20px;
+}
+.image{
+  width: 75px;
+  height: auto;
+  border-radius: 8px;
+}
