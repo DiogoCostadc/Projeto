@@ -150,3 +150,47 @@ a{
   text-decoration: none;
   font-size:14px;
 }
+
+.lista-item {
+  display: flex;
+  justify-self: center;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #E23C03;
+  border-radius: 8px;
+  padding: 6px;
+  margin: 12px;
+  background-color: white;
+  width: 100%;
+}
+.info {
+  display: flex;
+  gap: 10px;
+}
+.nome-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.nome {
+  font-size: 20px;
+  color: #E23C03;
+}
+.descricao {
+  color: #FF5920;
+}
+.obs {
+  font-weight: bold;
+}
+.image img {
+  width: 75px;
+  height: auto;
+  border-radius: 8px;
+}
+button{
+  background-color: #E23C03;
+  border-style: none;
+  padding: 10px;
+  border-radius: 8px;
+  color: #ffffff;
+}
