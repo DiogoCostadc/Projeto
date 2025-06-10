@@ -100,3 +100,15 @@ img{
   height: 135px;
   border-radius: 100%;
 }
+.section{
+  display: flex;
+  justify-content: space-between;
+}
+button{
+  background-color: #E23C03;
+  border-style: none;
+  color: white;
+  border-radius: 8px;
+  width: 75px;
+  padding: 8px;
+}
