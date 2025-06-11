@@ -50,7 +50,8 @@ addbut.addEventListener("click", async()=>{
 //-------------------------------------------------
 
   body.innerHTML += `<hr>
-                      <select name="exe" id="exer">                  
+                      <select name="exe" id="exer">  
+                      <option>Select an option</option>                
                       </select>`
 
   let exe = document.getElementById("exer")
