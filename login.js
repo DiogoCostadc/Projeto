@@ -58,9 +58,24 @@ function reloadDOM(){
                 email: emailInput.value,
                 password: passInput.value
         })
+            let token = await supabase.auth.getUser()
+        let uid = token.data.user.id
+        console.log(uid)
+        let user = await supabase        //buscar user
+                .from('User')
+                .select()
+                .eq("user_id", uid)
+            
+            let userData = user.data[0]
+            console.log(userData.admin)
+
+
             if(error){
                 alert("Email or Password is incorrect")
                 console.log(error)
+            }else if (userData.admin == true){
+                window.location.replace("../admin/index.html")
+                return
             }else{
                 //redireciona para a página principal 
                 window.location.replace("../Home/index.html")
