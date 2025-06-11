@@ -11,6 +11,7 @@ let arrayexercicio = []
 let but = document.getElementById("but")
 let cancelbut = document.getElementById("cancel")
 let body = document.getElementById("select")
+let header = document.getElementById("header")
 let exinfoname 
 let exinfodesc 
 let exinfoobs
@@ -22,6 +23,12 @@ let token = await supabase.auth.getUser()
 let uid = token.data.user.id
 console.log(uid)
 console.log(planid)
+
+let plan = await supabase
+.from('Planos')
+.select()
+.eq("id", planid)
+header.innerHTML = plan.data[0].nome
 
 let user = await supabase        //buscar user
         .from('User')
