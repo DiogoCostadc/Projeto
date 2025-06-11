@@ -50,13 +50,26 @@ for (let i = 0 ; i < exinfo.length; i++){
     .select()
     .in("id", exerarray)
     console.log(exercicioinfo.data[i])
-let info = exercicioinfo.data[i]
+    let info = exercicioinfo.data[i]
    
 
 
     
 
-     body.innerHTML +=` <p>nome : ${info.nome}, descrição : ${info.desc}, observação : ${info.obs}</p>` 
+    //` <p>nome : ${info.nome}, descrição : ${info.desc}, observação : ${info.obs}</p>` 
+
+    body.innerHTML += `<div class="lista-item">
+                        <div class="info">
+                            <div class="nome-desc">
+                            <label class="nome">${info.nome}</label>
+                            <label class="descricao">${info.desc}</label>
+                        </div>
+                            <label class="obs">${info.obs}</label>
+                        </div>
+                        <div class="image">
+                            <img src="https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-300x300.png" alt="placeholder" />
+                        </div>
+                    </div>`
 }
 
 

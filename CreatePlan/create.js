@@ -78,7 +78,23 @@ console.log(arrayexercicio)
 
         
         
-      exlist.innerHTML += `<p>nome: ${exinfoname}, desc : ${exinfodesc}, obs : ${exinfoobs}</p>`
+      exlist.innerHTML += `<div class="lista-item">
+                            <div>
+                                <div class="info">
+                                    <div class="nome-desc">
+                                    <label class="nome">${exinfoname}</label>
+                                    <label class="descricao">${exinfodesc}</label>
+                                    <button>Delete</button>
+                                </div>
+                                    <label class="obs">${exinfoobs}</label>
+                                </div>
+                            </div>
+                            <div class="image">
+                                <img src="https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-300x300.png" alt="placeholder" />
+                            </div>
+                        </div>`
+
+      //`<p>nome: ${exinfoname}, desc : ${exinfodesc}, obs : ${exinfoobs}</p>`
    }
   
   })

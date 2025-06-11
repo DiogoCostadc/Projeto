@@ -18,11 +18,13 @@ let Sbt = document.getElementById("Schange")
 let Wbt = document.getElementById("Wchange")
 let Cbt = document.getElementById("Cchange")
 let input = document.getElementById("prompt")
+
 //---------------------------------------------------------------
 
 let token = await supabase.auth.getUser()
 let uid = token.data.user.id
 console.log(uid)
+let uemail = token.data.user.email
 
 let user = await supabase        //buscar user
         .from('User')
@@ -134,6 +136,30 @@ Cbt.addEventListener("click", async()=>{
         const {data, error} = await supabase
         .from("User")
         .upsert({id : userfinalid, calories : valueinput.value})
+        input.innerHTML = ""
+        window.location.reload()
+    })
+})
+
+Ebt.addEventListener("click", async()=>{
+    let anchor = document.createElement("input")
+    anchor.type = "email"
+    anchor.id = "value"
+
+    input.appendChild(anchor)
+    let butanchor = document.createElement("button")
+    butanchor.type = "button"
+    butanchor.id = "butid"
+    butanchor.innerText = "confimar"
+    input.appendChild(butanchor)
+
+   butanchor.addEventListener("click", async()=>{
+        let valueinput = document.getElementById("value")
+        console.log(valueinput.value)
+       const { data, error } = await supabase.auth.updateUser({
+        email: `${valueinput.value}`
+        })
+        console.log(data)
         input.innerHTML = ""
         window.location.reload()
     })
