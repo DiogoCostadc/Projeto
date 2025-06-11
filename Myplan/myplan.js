@@ -114,6 +114,11 @@ deleteplan.addEventListener("click", async()=>{
   .from('Planos')
   .delete()
   .eq('id', currentPlan )
+    
+    let deletefav = await supabase
+    .from('Partilhados')
+    .delete()
+    .eq('plano', currentPlan)
 
  console.log(deleteplan) 
  homepage()
