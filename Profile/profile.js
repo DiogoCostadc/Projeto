@@ -18,7 +18,7 @@ let Sbt = document.getElementById("Schange")
 let Wbt = document.getElementById("Wchange")
 let Cbt = document.getElementById("Cchange")
 let input = document.getElementById("prompt")
-
+let logout = document.getElementById("logout")
 //---------------------------------------------------------------
 
 let token = await supabase.auth.getUser()
@@ -164,6 +164,12 @@ Ebt.addEventListener("click", async()=>{
         input.innerHTML = ""
         window.location.reload()
     })
+})
+
+logout.addEventListener("click", async()=>{
+    const { error } = await supabase.auth.signOut()
+    window.location.replace("../index.html")
+    window.localStorage.clear()
 })
 
 
