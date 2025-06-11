@@ -10,10 +10,12 @@ let exlist = document.getElementById("exlist")
 let planid = localStorage.getItem("CreateIdPlan")
 let arrayexercicio = []
 let but = document.getElementById("but")
+let cancelbut = document.getElementById("cancel")
 //------------------------------------------------------
 let token = await supabase.auth.getUser()
 let uid = token.data.user.id
 console.log(uid)
+console.log(planid)
 
 let user = await supabase        //buscar user
         .from('User')
@@ -115,6 +117,15 @@ but.addEventListener("click", async()=>{
   .insert(arraytest)
 
   alert("Plano criado")
+  window.location.replace("../Home/index.html")
+})
+
+cancelbut.addEventListener("click", async()=>{
+  let deleteplan = await supabase
+  .from('Planos')
+  .delete()
+  .eq('id', planid )
+
   window.location.replace("../Home/index.html")
 })
 

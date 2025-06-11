@@ -39,7 +39,7 @@ console.log(userData)
 loadinfo()
 function loadinfo() {
     name.innerHTML = userData.username
-    //email.innerHTML = 
+    email.innerHTML = uemail
     age.innerHTML = (`Data de nascimento : ${userData.age_birth}`)
     phone.innerHTML = (`Telemovel : ${userData.telephone}`) 
   
@@ -160,6 +160,7 @@ Ebt.addEventListener("click", async()=>{
         email: `${valueinput.value}`
         })
         console.log(data)
+        console.log(error)
         input.innerHTML = ""
         window.location.reload()
     })

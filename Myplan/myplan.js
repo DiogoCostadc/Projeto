@@ -7,12 +7,15 @@ let header = document.getElementById("header")
 let body = document.getElementById("list")
 let share = document.getElementById("share")
 let backbut = document.getElementById("backbut")
+let deleteplan = document.getElementById("deletebut")
+console.log(currentPlan)
 
 let plano = await supabase
 .from("Planos")
 .select()
 .eq("id", currentPlan)
 let planName = plano.data[0].nome
+
 
 
 let exercicio = await supabase
@@ -43,12 +46,13 @@ let exerarray = []              //guarda o id dos exercicios do plano
 planinfo()
 async function planinfo() {
     header.innerHTML = `${planName}`
-
-for (let i = 0 ; i < exinfo.length; i++){
-     let exercicioinfo = await supabase      //procura info do exercicio
+let exercicioinfo = await supabase      //procura info do exercicio
     .from("Exercicio")
     .select()
     .in("id", exerarray)
+
+for (let i = 0 ; i < exinfo.length; i++){
+     
     console.log(exercicioinfo.data[i])
     let info = exercicioinfo.data[i]
    
@@ -96,4 +100,16 @@ share.addEventListener("click", async()=>{
 
 backbut.addEventListener("click", async()=>{
     window.location.replace("../Home/index.html")
+})
+
+deleteplan.addEventListener("click", async()=>{
+    let deleteplan = await supabase
+  .from('Planos')
+  .delete()
+  .eq('id', currentPlan )
+
+ console.log(deleteplan) 
+ 
+
+  window.location.replace("../Home/index.html")
 })
