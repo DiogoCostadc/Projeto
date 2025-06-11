@@ -58,12 +58,11 @@ html {
   border-style: solid;
 }
 .searchbar{
-  height: 25px;
-  margin: 12px;
-  background: transparent;
-  border: none;
+  text-align: left;
   color: white;
-  border-bottom: 3px solid white;
+  padding: 12px;
+  font-size: 20px;
+  opacity: 75%;
 }
 ::placeholder{
   color: white;
