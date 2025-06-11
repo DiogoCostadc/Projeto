@@ -5,12 +5,12 @@ const supabase = createClient('https://lbagxsindniuqrinfyug.supabase.co', 'eyJhb
 //Variaveis HTML
 //------------------------------------------------------
 let addbut = document.getElementById("addbut")
-let exe = document.getElementById("exer")
 let exlist = document.getElementById("exlist")
 let planid = localStorage.getItem("CreateIdPlan")
 let arrayexercicio = []
 let but = document.getElementById("but")
 let cancelbut = document.getElementById("cancel")
+let body = document.getElementById("select")
 let exinfoname 
 let exinfodesc 
 let exinfoobs
@@ -46,19 +46,23 @@ let exercicio = await supabase
 //Butão para criar a lista de exercicios para o utilizador escolher
 //------------------------------------------------------------------------
 addbut.addEventListener("click", async()=>{
-  
-
 //for para adicionar os planos a um select no html
 //-------------------------------------------------
-for (let i = 0 ; i < exercicios.length ; i++){ 
-console.log(exercicios[i].nome)
 
-  let opt = document.createElement("option")
-  opt.id = exercicios[i].id
-  opt.textContent = exercicios[i].nome
-  opt.value = exercicios[i].id
-  exe.appendChild(opt)
-}
+  body.innerHTML += `<hr>
+                      <select name="exe" id="exer">                  
+                      </select>`
+
+  let exe = document.getElementById("exer")
+  for (let i = 0 ; i < exercicios.length ; i++){ 
+  console.log(exercicios[i].nome)
+
+    let opt = document.createElement("option")
+    opt.id = exercicios[i].id
+    opt.textContent = exercicios[i].nome
+    opt.value = exercicios[i].id
+    exe.appendChild(opt)
+  }
 //---------------------------------------------------
 
 //Sempre que houver mudança no select 
@@ -99,6 +103,7 @@ console.log(arrayexercicio)
                                 <img src="https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-300x300.png" alt="placeholder" />
                             </div>
                         </div>`
+      body.innerHTML = ``
    }
    //-------------------Fim da procura de info do plano------------------------------------------------------
   })
@@ -142,4 +147,3 @@ cancelbut.addEventListener("click", async()=>{
 function homepage(){
 window.location.replace("../Home/index.html")
 }
-
