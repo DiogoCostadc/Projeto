@@ -17,7 +17,6 @@ let Pbt = document.getElementById("Pchange")
 let Sbt = document.getElementById("Schange")
 let Wbt = document.getElementById("Wchange")
 let Cbt = document.getElementById("Cchange")
-let input = document.getElementById("prompt")
 let logout = document.getElementById("logout")
 let back = document.getElementById("back")
 //--------------------------------------------------------------
@@ -50,7 +49,7 @@ function loadinfo() {
 
 Abt.addEventListener("click", async()=>{
     
-   addDataInput()
+    addDataInput()
 
     
 })
@@ -64,41 +63,43 @@ Pbt.addEventListener("click", async()=>{
 })
 
 Wbt.addEventListener("click", async()=>{
-    
-   let anchor = document.createElement("input")
+    weight.innerHTML = ""
+
+    let anchor = document.createElement("input")
     anchor.type = "number"
     anchor.id = "value"
-    
-    input.appendChild(anchor)
+    weight.appendChild(anchor)
+
     let butanchor = document.createElement("button")
     butanchor.type = "button"
     butanchor.id = "butid"
     butanchor.innerText = "confimar"
-    input.appendChild(butanchor)
+    weight.appendChild(butanchor)
     
-     butanchor.addEventListener("click", async()=>{
+    butanchor.addEventListener("click", async()=>{
         let valueinput = document.getElementById("value")
         console.log(valueinput.value)
         const {data, error} = await supabase
         .from("User")
         .upsert({id : userfinalid, weight : valueinput.value})
-        input.innerHTML = ""
+        weight.innerHTML = ""
         window.location.reload()
     })
 })
 
 Cbt.addEventListener("click", async()=>{
-    
+    cal.innerHTML = ""
+
     let anchor = document.createElement("input")
     anchor.type = "number"
     anchor.id = "value"
+    cal.appendChild(anchor)
     
-    input.appendChild(anchor)
     let butanchor = document.createElement("button")
     butanchor.type = "button"
     butanchor.id = "butid"
     butanchor.innerText = "confimar"
-    input.appendChild(butanchor)
+    cal.appendChild(butanchor)
 
     butanchor.addEventListener("click", async()=>{
         let valueinput = document.getElementById("value")
@@ -106,7 +107,7 @@ Cbt.addEventListener("click", async()=>{
         const {data, error} = await supabase
         .from("User")
         .upsert({id : userfinalid, calories : valueinput.value})
-        input.innerHTML = ""
+        cal.innerHTML = ""
         window.location.reload()
     })
 })
@@ -125,72 +126,80 @@ logout.addEventListener("click", async()=>{
 })
 
 function addemailinput(){
+    email.innerHTML = ""
+
     let anchor = document.createElement("input")
     anchor.type = "email"
     anchor.id = "value"
+    email.appendChild(anchor)
 
-    input.appendChild(anchor)
     let butanchor = document.createElement("button")
     butanchor.type = "button"
     butanchor.id = "butid"
     butanchor.innerText = "confimar"
-    input.appendChild(butanchor)
+    email.appendChild(butanchor)
 
-     butanchor.addEventListener("click", async()=>{
+    butanchor.addEventListener("click", async()=>{
         let valueinput = document.getElementById("value")
         console.log(valueinput.value)
-       const { data, error } = await supabase.auth.updateUser({
+        const { data, error } = await supabase.auth.updateUser({
         email: `${valueinput.value}`
         })
         console.log(data)
         console.log(error)
-        input.innerHTML = ""
+        email.innerHTML = ""
         window.location.reload()
     })
 }
 
 function addTelinput(){
-     let anchor = document.createElement("input")
+    phone.innerHTML = ""
+
+    let anchor = document.createElement("input")
     anchor.type = "tel"
     anchor.id = "value"
     anchor.placeholder = "***-***-***"
     anchor.maxLength = "9"
-    input.appendChild(anchor)
+    phone.appendChild(anchor)
+
     let butanchor = document.createElement("button")
     butanchor.type = "button"
     butanchor.id = "butid"
     butanchor.innerText = "confimar"
-    input.appendChild(butanchor)
+    phone.appendChild(butanchor)
 
-     butanchor.addEventListener("click", async()=>{
+    butanchor.addEventListener("click", async()=>{
         let valueinput = document.getElementById("value")
         console.log(valueinput.value)
         const {data, error} = await supabase
         .from("User")
         .upsert({id : userfinalid, telephone : valueinput.value})
-        input.innerHTML = ""
+        phone.innerHTML = ""
         window.location.reload()
     })
 
 }
 
 function addDataInput(){
-     let anchor = document.createElement("input")
+    age.innerHTML = ""
+    let anchor = document.createElement("input")
     anchor.type = "date"
     anchor.id = "value"
-    input.appendChild(anchor)
+    age.appendChild(anchor)
+
     let butanchor = document.createElement("button")
     butanchor.type = "button"
     butanchor.id = "butid"
     butanchor.innerText = "confimar"
-    input.appendChild(butanchor)
+    age.appendChild(butanchor)
+
     butanchor.addEventListener("click", async()=>{
         let valueinput = document.getElementById("value")
         console.log(valueinput.value)
         const {data, error} = await supabase
         .from("User")
         .upsert({id : userfinalid, age_birth : valueinput.value})
-        input.innerHTML = ""
+        age.innerHTML = ""
         window.location.reload()
     })
 }
