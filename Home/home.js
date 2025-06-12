@@ -2,10 +2,22 @@ import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient('https://lbagxsindniuqrinfyug.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxiYWd4c2luZG5pdXFyaW5meXVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc5MTg3NDUsImV4cCI6MjA2MzQ5NDc0NX0.vJ4oWcxhWsvytyRGqaKowYPPQaU1hvMLOSSLPU0T4AU')
 
+//Uid do user
+//--------------------------------------------------------
 let token = await supabase.auth.getUser()
 let uid = token.data.user.id
 console.log(uid)
 
+let user = await supabase        //buscar user
+        .from('User')
+        .select()
+        .eq("user_id", uid)
+     let userfinal = user.data[0].id
+//---------------------------------------------------------
+
+//Variaveis para o html 
+//--------------------------------------------------------
+let profilebut = document.getElementById("profileclick")
 let createplan = document.getElementById("create")
 let page = 1
 let body = document.getElementById("screen-body")
@@ -14,8 +26,10 @@ document.querySelectorAll('#change').forEach(link => {
         pagechange();
     });
 });
+//--------------------------------------------------------
 
-let profilebut = document.getElementById("profileclick")
+//Função para qual pagina mostrar
+//---------------------------------------------------------------------------
 CurrentPage()
 
 function CurrentPage(){
@@ -46,17 +60,13 @@ function CurrentPage(){
     }
     Render()
 }
-
+//Pagina para os planos partilhados
+//----------------------------------------------------------
 async function Render() {
     if (page == 1){
         let col1 = document.getElementById("col-1")
         let col2 = document.getElementById("col-2")
-        let user = await supabase        //buscar user
-        .from('User')
-        .select()
-        .eq("user_id", uid)
-        let userfinal = user.data[0].id
-
+        
         let planos = await supabase
             .from("Partilhados")            //procura planos com o id do user
             .select()
@@ -88,9 +98,7 @@ async function Render() {
 
             let label = document.createElement("label");
             label.textContent = plan.nome;
-            
             let click = document.createElement("a")
-            
             let div1 = document.createElement("div")
             div1.id = plan.id
             div1.classList.add("plan")
@@ -119,15 +127,14 @@ async function Render() {
             }) 
         }
     }
+//----------------------------------------------------------------------------------------------------------
+
+//Planos do utilizador
+//------------------------------------------------------------------------------------------------------------
     else{
         let col1 = document.getElementById("col-1")
         let col2 = document.getElementById("col-2")
-        let user = await supabase        //buscar user
-        .from('User')
-        .select()
-        .eq("user_id", uid)
-        let userfinal = user.data[0].id
-
+             
         let planos = await supabase
             .from("User-Planos")            //procura planos com o id do user
             .select()
@@ -189,85 +196,45 @@ async function Render() {
                 localStorage.setItem("currentPlan", btnid)
                 window.location.replace("../Myplan/myplan.html")
 
-                //teste()
-                //async function teste(){
-                //    let planoteste = await supabase     //procura na planos-exercicios por exercicios no id do plano
-                //    .from("Plano-Exercicio")
-                //    .select()
-                //    .eq("plano", btnid)
-                //console.log(planoteste.data)
                 
-            //  let exerarray = []              //guarda o id dos exercicios do plano
-
-                //planoteste.data.forEach(exercicio => {
-                //   console.log(exercicio.exercicio)
-                //   exerarray.push(exercicio.exercicio)
-                //});
-                //console.log(exerarray)
-
-                //let exercicioinfo = await supabase      //procura info do exercicio
-                //.from("Exercicio")
-                //.select()
-                //.in("id", exerarray)
-                //console.log(exercicioinfo.data)
             }) 
         }
     }
 }
-
+//Função para gerir a mundança de pagina
+//-----------------------------------------------------------------------------------
 function pagechange(){
     page = page === 1 ? 2 : 1;
     CurrentPage()
     console.log("triggered")
 }
+//--------------------------------------------------------------------------
 
-
-
-/*
-array2.forEach(planos => {              //cria butao como nome de cada array
-    console.log(planos.nome)
-    console.log(planos)
-    mainbody.innerHTML += `<button id="${planos.id}" onclick="teste()" type="button">${planos.nome}</button>`
-
-
-
-    //document.getElementById(`${planos.id}`).addEventListener("click", async () => {
-    //  console.log(event.srcElement.id)
-    //})
-    
-});*/
-
-// async function teste() {
-    //  console.log(event.srcElement.id)
-//}
-
+//Butão para pagina de criar o plano (este cria um plano vazio)
+//---------------------------------------------------------------------------
 createplan.addEventListener("click", async()=>{
 
-    let user = await supabase        //buscar user
-        .from('User')
-        .select()
-        .eq("user_id", uid)
-     let userfinal = user.data[0].id
-
     let planname = prompt("Nome do plano")
-    console.log(userfinal)
-
+    
     let addplan = await supabase
         .from('Planos')
         .insert({nome:planname})
         .select()
     let planid = addplan.data[0].id
         
-
     let add = await supabase
     .from('User-Planos')
     .insert({user: userfinal, planos: planid})
     .select()
-    console.log(add.data)
+    //console.log(add.data)
     localStorage.setItem("CreateIdPlan", planid)
     window.location.replace("../CreatePlan/index.html")
 })
+//--------------------------------------------------------
 
+//Butão para ir para tela de perfil
+//--------------------------------------------------------
 profilebut.addEventListener("click", async()=>{
     window.location.replace("../Profile/index.html")
 })
+//--------------------------------------------------------

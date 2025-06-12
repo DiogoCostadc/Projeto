@@ -58,7 +58,7 @@ function reloadDOM(){
                 email: emailInput.value,
                 password: passInput.value
         })
-            let token = await supabase.auth.getUser()
+        let token = await supabase.auth.getUser()
         let uid = token.data.user.id
         console.log(uid)
         let user = await supabase        //buscar user
@@ -74,10 +74,12 @@ function reloadDOM(){
                 alert("Email or Password is incorrect")
                 console.log(error)
             }else if (userData.admin == true){
+                alert("Bem vindo administrador")
                 window.location.replace("../admin/index.html")
                 return
             }else{
-                //redireciona para a página principal 
+                //redireciona para a página principal
+                alert("Bem vindo")
                 window.location.replace("../Home/index.html")
             }
         })
