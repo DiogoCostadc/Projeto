@@ -95,6 +95,7 @@ a{
   height: 125px;
   margin: 12px;
   gap: 8px;
+  border: #FF5920 solid 6px;
 }
 .name{
   text-align: center
@@ -136,4 +137,7 @@ a.setting{
 .user-style{
   font-size: 20px;
   text-decoration-line: underline;
+}
+button:hover{
+  background-color: #FF5920;
 }

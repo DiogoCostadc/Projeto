@@ -21,11 +21,12 @@ let profilebut = document.getElementById("profileclick")
 let createplan = document.getElementById("create")
 let page = 1
 let body = document.getElementById("screen-body")
-document.querySelectorAll('#change').forEach(link => {
-    link.addEventListener('click', function(event) {
-        pagechange();
-    });
-});
+document.getElementById("myplans").addEventListener("click",function(){
+    Myplan()
+})
+document.getElementById("plans").addEventListener("click",function(){
+    Home()
+})
 //--------------------------------------------------------
 
 //Função para qual pagina mostrar
@@ -66,6 +67,8 @@ async function Render() {
     if (page == 1){
         let col1 = document.getElementById("col-1")
         let col2 = document.getElementById("col-2")
+        document.getElementById("Micon").src = "../Img/myplans.png"
+        document.getElementById("Hicon").src = "../Img/SELECT-Home.png"
         
         let planos = await supabase
             .from("Partilhados")            //procura planos com o id do user
@@ -134,6 +137,8 @@ async function Render() {
     else{
         let col1 = document.getElementById("col-1")
         let col2 = document.getElementById("col-2")
+        document.getElementById("Micon").src = "../Img/SELECT-myplans.png"
+        document.getElementById("Hicon").src = "../Img/Home.png"
              
         let planos = await supabase
             .from("User-Planos")            //procura planos com o id do user
@@ -203,10 +208,13 @@ async function Render() {
 }
 //Função para gerir a mundança de pagina
 //-----------------------------------------------------------------------------------
-function pagechange(){
-    page = page === 1 ? 2 : 1;
+function Myplan(){
+    page = 2
     CurrentPage()
-    console.log("triggered")
+}
+function Home(){
+    page = 1
+    CurrentPage()
 }
 //--------------------------------------------------------------------------
 

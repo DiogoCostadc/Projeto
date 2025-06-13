@@ -185,9 +185,12 @@ a{
   border-radius: 8px;
 }
 button{
-  background-color: #FF5920;
+  background-color: #E23C03;
   border-style: none;
   padding: 10px;
   border-radius: 8px;
   color: #ffffff;
+}
+button:hover{
+  background-color: #FF5920;
 }
