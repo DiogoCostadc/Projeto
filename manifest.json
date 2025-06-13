@@ -1,7 +1,7 @@
 {
     "name": "FitPlanner",
     "shortname": "FitPlanner", 
-    "start_url": "https://diogocostadc.github.io/Projeto",
+    "start_url": "https://diogocostadc.github.io/Projeto/index.html",
     "display": "standalone",
 
     "icons":[
