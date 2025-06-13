@@ -22,7 +22,7 @@ self.addEventListener("install", function(event){
     event.waitUntil(
         caches.open(cache_static_1)
         .then(function(cache){
-           return cache.addAll([offline_url, offlinestyle])
+           return cache.addAll([offline_url])
         })
     )
 })
