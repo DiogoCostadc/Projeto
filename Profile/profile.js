@@ -208,5 +208,6 @@ back.addEventListener("click", async()=>{
     window.location.replace("../Home/index.html")
 })
 
-
-
+Sbt.addEventListener("click", async()=>{
+    window.location.replace("../Subscription/index.html")
+})
