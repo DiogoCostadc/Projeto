@@ -56,30 +56,5 @@ self.addEventListener("fetch", function(event){
                 }
             })()
         )
-    }else{
-        
-            event.respondWith(
-                caches.match(event.request)
-                .then(function(response){
-                    if (response){
-                        return response
-                    } else {
-                        return fetch(event.request)
-                        .then (function(res){
-                            return caches.open(cache_dynamic_1)
-                            .then(function(cache){
-                                cache.put(event.request.url, res.clone())
-                                return res
-                            })
-                        })
-                        .catch( async function(err){
-                          let cache = await caches.open(cache_static_1)
-                          let fallbackResponse = await cache.match(event.request)
-                          return fallbackResponse
-                        })
-                    }
-                })
-            )
-    
     }
 })

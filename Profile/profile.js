@@ -205,7 +205,12 @@ function addDataInput(){
 }
 
 back.addEventListener("click", async()=>{
-    window.location.replace("../Home/index.html")
+    if(userData.admin == true){
+        window.location.replace("../admin/index.html")
+    }else{
+        window.location.replace("../Home/index.html")
+    }
+    
 })
 
 

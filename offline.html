@@ -118,6 +118,7 @@
             <div class="screen-space" id="main-body">
                 <div id="list">
                     <!-- Lista aparece aqui -->
+                     <button id="teste" type="button">teste</button>
                     
                 </div>
             
@@ -125,5 +126,12 @@
         </div>
     </div>
 
+    <script>
+let teste = document.getElementById("teste")
+
+teste.addEventListener("click", async()=>{
+  window.location.reload(true)
+})
+    </script>
 </body>
 </html>
