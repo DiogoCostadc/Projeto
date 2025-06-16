@@ -27,7 +27,12 @@ html {
 }
 .main-body{
   height: 85%;
-  overflow-y:auto
+  overflow-y:auto;
+  padding-bottom: 36px;
+}
+.bottom-menu{
+  height: 15%;
+  display: flex;
 }
 .search-area{
   width: 70%;
@@ -37,7 +42,7 @@ html {
   align-items: flex-end;
 }
 .profile-area{
-  width: 95%;
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: flex-end;
@@ -58,14 +63,16 @@ html {
   border-style: solid;
 }
 .searchbar{
-  text-align: left;
+  height: 25px;
+  width: 100%;
+  margin: 12px;
+  background: transparent;
+  border: none;
   color: white;
-  padding: 12px;
-  font-size: 20px;
-  opacity: 75%;
+  border-bottom: 3px solid white;
 }
 ::placeholder{
-  color: white;
+  color: rgba(255, 255, 255, 0.5);
 }
 .profile{
   border-radius: 100%;
@@ -90,7 +97,7 @@ html {
   border-radius: 8px;
   border-width: 4px;
   border-style: solid;
-  height: 23%;
+  height: 30%;
   padding: 4px;
 }
 .list{
@@ -99,10 +106,14 @@ html {
   column-gap: 8px;
 }
 .cols{
-  display: grid;
-  width: 50%;
-  height:fit-content;
-  row-gap: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 95%;
+  width: 40%;
+  border: #FF5920 solid 4px;
+  border-radius: 16px;
+  padding: 12px;
 }
 .plan{
   width: 100%;
@@ -139,79 +150,76 @@ html {
 }
 .text-secondcolor{
   color: #FF5920;
+  text-align: center;
 }
 .screen-space{
   margin: 12px;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 12px
 }
 a{
   color: white;
   text-decoration: none;
   font-size:14px;
 }
+.sub1{
+  border: #FF5920 solid 4px;
+  border-radius: 16px;
+}
+.sub2{
+  background-color: #FF5920;
+  border: #E23C03 solid 4px;
+  border-radius: 16px;
+}
+ul{
+  text-align: left;
+  padding-left: 12px;
+  margin: 0;
+}
 
-.lista-item {
-  display: flex;
-  justify-self: center;
-  justify-content: space-between;
-  align-items: center;
-  border: 2px solid #E23C03;
-  border-radius: 8px;
-  padding: 6px;
-  margin: 12px;
-  background-color: white;
-  width: 100%;
-}
-.info {
-  display: flex;
-  gap: 10px;
-}
-.nome-desc {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.nome {
-  font-size: 20px;
-  color: #E23C03;
-}
-.descricao {
-  color: #FF5920;
-}
-.obs {
-  font-weight: bold;
-}
-.image img {
-  width: 75px;
-  height: auto;
-  border-radius: 8px;
-}
 button{
   background-color: #E23C03;
-  border-style: none;
-  padding: 12px 15%;
+  border:#E23C03 2px solid;
+  color: white;
   border-radius: 8px;
-  color: #ffffff;
-}
-.add{
-  padding: 8px 46%;
+  text-align: center;
+  padding: 15px;
+  align-self: center;
+  margin-top: auto;
 }
 button:hover{
   background-color: #FF5920;
+  border: #FF5920 2px solid;
 }
 
-.delete{
-  background-color: #ffffff;
-  color: red;
-  border: solid 3px red;
-}
-.delete:hover{
-  background-color: red;
+.text-white{
   color: white;
+  text-align: center;
 }
-.buttons {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  gap:8px;
+ul.text-white{
+  text-align: left;
+}
+ul.text-secondcolor{
+  text-align: left;
+}
+
+.btn{
+  background-color: transparent;
+  border: solid 2px white;
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  padding: 15px;
+  align-self: center;
+  margin-top: auto;
+}
+.btn:hover{
+  background-color: white;
+  color:#FF5920;
+}
+ul li{
+  padding-bottom: 12px;
 }

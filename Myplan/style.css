@@ -187,10 +187,21 @@ a{
 button{
   background-color: #E23C03;
   border-style: none;
-  padding: 10px;
+  padding: 12px 18%;
   border-radius: 8px;
   color: #ffffff;
 }
 button:hover{
   background-color: #FF5920;
+}
+
+.delete{
+  background-color: #ffffff;
+  color: red;
+  border: solid 3px red;
+  padding: 12px 42%;
+}
+.delete:hover{
+  background-color: red;
+  color: white;
 }
