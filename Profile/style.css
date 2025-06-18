@@ -30,7 +30,11 @@ html {
 }
 .main-body{
   height: 85%;
-  overflow-y:auto
+  overflow-y:auto;
+  background-image: url(../Img/waves.png);
+  background-position: 100% 115%;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 .search-area{
   width: 70%;
@@ -81,7 +85,7 @@ html {
   justify-content: center;
 }
 a{
-  color: #E23C03;
+  color: white;
   text-decoration: none;
   font-size:14px;
 }

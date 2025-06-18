@@ -140,7 +140,11 @@ function renderform(){
         screen.innerHTML = `<div class="row1">
                                 <img src="Img/Logo.png" width="272px" height="165px">
                                 </div>
-
+                                <div class="pagestyle">
+                                    <div class="pagestyle"><hr></div>
+                                    <div class="pagestyle"><h2>Log In</h2></div>
+                                    <div class="pagestyle"><hr></div>
+                                </div>
                                 <form>
                                     <div class="row2">
                                         <div class="row3"> 
@@ -181,7 +185,11 @@ function renderform(){
         screen.innerHTML = `<div class="row1">
                                 <img src="Img/Logo.png" width="272px" height="165px">
                                 </div>
-
+                                <div class="pagestyle">
+                                    <div class="pagestyle"><hr></div>
+                                    <div class="pagestyle"><h2>Sign</h2></div>
+                                    <div class="pagestyle"><hr></div>
+                                </div>
                                 <form>
                                     <div class="row2">
                                         <div class="row3"> 

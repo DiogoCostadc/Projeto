@@ -14,9 +14,13 @@ html {
     border-radius: 25px;
     overflow: hidden;
     display: grid;
-    flex-direction: column;
+    align-content: flex-start;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-image: url(Img/waves.png);
+    background-position: 100% 115%;
+    background-repeat: no-repeat;
+    background-size: 100%;
   }
   .row1 {
     flex: 1;
@@ -26,7 +30,7 @@ html {
     justify-content: center;
     font-size: 1.5em;
     font-weight: bold;
-    padding-top: 50px;
+    padding-top: 15px;
   }
   .row2 {
     flex: 3;
@@ -76,7 +80,7 @@ html {
     color: #FF5920;
   }
   .row3{
-    margin-top: 16px;
+    margin-top: 5px;
   }
   .maincolor{
     color: #E23C03;
@@ -91,4 +95,22 @@ html {
   }
   a{
     color: #E23C03;
+  }
+
+  .pagestyle{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  hr{
+    border: #E23C03 2px solid;
+    width: 100%;
+  }
+
+  h2{
+    color: #E23C03;
+    font-size: 20px;
   }
