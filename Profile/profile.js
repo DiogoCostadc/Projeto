@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient('https://lbagxsindniuqrinfyug.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxiYWd4c2luZG5pdXFyaW5meXVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc5MTg3NDUsImV4cCI6MjA2MzQ5NDc0NX0.vJ4oWcxhWsvytyRGqaKowYPPQaU1hvMLOSSLPU0T4AU')
 
+//VARIAVEIS
 //---------------------------------------------------------------
 let name = document.getElementById("name")
 let email = document.getElementById("email")
@@ -21,6 +22,8 @@ let logout = document.getElementById("logout")
 let back = document.getElementById("back")
 //--------------------------------------------------------------
 
+//Info do user
+//-------------------------------------------------------------------
 let token = await supabase.auth.getUser()
 let uid = token.data.user.id
 console.log(uid)
@@ -34,7 +37,9 @@ let user = await supabase        //buscar user
      let userData = user.data[0]
 console.log(userfinalid)
 console.log(userData)
+//--------------------------------------------------------------------
 
+//Carrega info do user
 //------------------------------------------------------------------------
 loadinfo()
 function loadinfo() {
@@ -46,7 +51,12 @@ function loadinfo() {
     weight.innerHTML = (`Peso : ${userData.weight}Kg`)
     cal.innerHTML = (`Calorias perdidas : ${userData.calories} `) 
 }
+//---------------------------------------------------------------------------
 
+//BOTÕES PARA EDITAR INFO DO USER
+//-------------------------------------------------------------------------------
+
+//Idade
 Abt.addEventListener("click", async()=>{
     
     addDataInput()
@@ -54,6 +64,7 @@ Abt.addEventListener("click", async()=>{
     
 })
 
+//Telemovel
 Pbt.addEventListener("click", async()=>{
     
     addTelinput()
@@ -62,6 +73,7 @@ Pbt.addEventListener("click", async()=>{
 
 })
 
+//Peso
 Wbt.addEventListener("click", async()=>{
     weight.innerHTML = ""
 
@@ -87,6 +99,7 @@ Wbt.addEventListener("click", async()=>{
     })
 })
 
+//Calorias
 Cbt.addEventListener("click", async()=>{
     cal.innerHTML = ""
 
@@ -112,6 +125,7 @@ Cbt.addEventListener("click", async()=>{
     })
 })
 
+//Email
 Ebt.addEventListener("click", async()=>{
     
     addemailinput()
@@ -119,12 +133,23 @@ Ebt.addEventListener("click", async()=>{
   
 })
 
+//ir para as subscrições
+Sbt.addEventListener("click", async()=>{
+    window.location.replace("../Subscription/index.html")
+})
+//------------------------------------------------------------------------------------------------------
+
+//Botão de logout
+//-------------------------------------------------
 logout.addEventListener("click", async()=>{
     const { error } = await supabase.auth.signOut()
     window.location.replace("../index.html")
     window.localStorage.clear()
 })
+//-------------------------------------------------
 
+//Funções utilizadas para editar info
+//------------------------------------------------
 function addemailinput(){
     email.innerHTML = ""
 
@@ -203,7 +228,10 @@ function addDataInput(){
         window.location.reload()
     })
 }
+//--------------------------------------------------
 
+//Botão de voltar para o menu principal e para o menu de admin caso seja admin
+//---------------------------------------------------------
 back.addEventListener("click", async()=>{
     if(userData.admin == true){
         window.location.replace("../admin/index.html")
@@ -212,7 +240,7 @@ back.addEventListener("click", async()=>{
     }
     
 })
+//----------------------------------------------------------
 
-Sbt.addEventListener("click", async()=>{
-    window.location.replace("../Subscription/index.html")
-})
+
+

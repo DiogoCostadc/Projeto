@@ -2,21 +2,33 @@ import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient('https://lbagxsindniuqrinfyug.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxiYWd4c2luZG5pdXFyaW5meXVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc5MTg3NDUsImV4cCI6MjA2MzQ5NDc0NX0.vJ4oWcxhWsvytyRGqaKowYPPQaU1hvMLOSSLPU0T4AU')
 
+//----------------------------------------------------------------------------------------
+
+//Service Worker
+//------------------------------------------------------------------
 if("serviceWorker" in navigator){
     navigator.serviceWorker.register("./sw.js").then(function(){
         console.log("Service Worker is registered")
     })
   }
+//-------------------------------------------------------
 
+//Variaveis
+//---------------------------------------------
 let screen = document.getElementById("frame")
 let LogType = "login"
 let Usertoken = null
 //------------------------------------------
 
-renderform()
-//-------------------------------------------------------------------------------------------------------------------------------
 
+//----------------
+renderform()
+//----------------
+
+//Função para que lida com o login e o signup
+//----------------------------------------------------------------------------------------------------
 function reloadDOM(){
+//Variaveis dos inputs e dos botões
     let singupBt = document.getElementById("signUpBt")
     let username = document.getElementById("usernameinput")
     let passInput = document.getElementById("password")
@@ -24,10 +36,14 @@ function reloadDOM(){
     let butdiv = document.getElementById("log-reg-bt")
     let emailInput = document.getElementById("email")
 
+//Clicar no botão de signup muda a o HTML
     singupBt.addEventListener("click",async ()=>{
             formchange()
     })
 
+//-----------------------"IF" PARA LOGIN OU SIGNUP---------------------------------------------------
+
+//----------------------------------CASO SIGNUP-----------------------------------------------------------------
     //CRIA BUTAO E AREA DE INPUT DE REGISTRO
     if (LogType == "signup"){
             //so depois de criado posso criar variavel
@@ -44,6 +60,8 @@ function reloadDOM(){
                 alert("error")
                 return
         }else
+    
+        //Conta já está criada nesta etapa na auth mas ainda não existe na tabela de user
 
         //VER TOKEN DO USER CRIADO
         Usertoken = await supabase.auth.getUser()                       
@@ -51,19 +69,23 @@ function reloadDOM(){
         //CRIAR USER NA TABELA DE USER
         const usernew = await supabase 
         .from('User')
-        
         //USER_ID É O NUMERO ASSOCIADO AO AUTH
         .insert({user_id: Usertoken.data.user.id, username: userInput.value})
-        alert("guh2")
+        alert("Conta criada com sucesso")
         window.location.reload()
         })
     }
+//------------------------------------------------------------------------------------------------------------
+
+//---------------------------------------CASO LOGIN-------------------------------------------------------------
     else if (LogType == "login"){
         log_in_Bt.addEventListener("click", async()=>{
             const { data, error } = await supabase.auth.signInWithPassword({
                 email: emailInput.value,
                 password: passInput.value
         })
+
+    //------------------INFO SOBRE ADMIN----------------------------------------
         let token = await supabase.auth.getUser()
         let uid = token.data.user.id
         console.log(uid)
@@ -74,34 +96,46 @@ function reloadDOM(){
             
             let userData = user.data[0]
             console.log(userData.admin)
+    //------------------------------------------------------------
 
-
-            if(error){
+        //---------------MUDANÇA DE PAGINA-----------------------------------
+            if(error){ //Caso erro
                 alert("Email or Password is incorrect")
                 console.log(error)
-            }else if (userData.admin == true){
+                return
+            }else if (userData.admin == true){ //Caso admin
+                //redireciona para a página de admin
                 alert("Bem vindo administrador")
                 window.location.replace("../admin/index.html")
                 return
-            }else{
+            }else{ //Caso utilizador
                 //redireciona para a página principal
                 alert("Bem vindo")
                 window.location.replace("../Home/index.html")
             }
+        //-----------------------------------------------------
         })
     }
     
 
     
 }
+//----------------------------------------------------------------------------------------------------------------------------------------
 
+//Mudança entre login e signup
+//---------------------------------------------------------
 function formchange(){
     LogType = LogType === "login" ? "signup" : "login";
     console.log(LogType)
     renderform()
 }
+//------------------------------------------------------
 
+
+//Função com o HTML do login e signup
+//-----------------------------------------------------------------------------------------------------------------
 function renderform(){
+//--------------------------------------HTML LOGIN--------------------------------------------------------------------------------
     if (LogType == "login"){
         screen.innerHTML = `<div class="row1">
                                 <img src="Img/Logo.png" width="272px" height="165px">
@@ -142,6 +176,7 @@ function renderform(){
                                 </div>
                             </div>`
     }
+//----------------------------------HTML SIGNUP------------------------------------------------------------------------
     else if (LogType == "signup"){
         screen.innerHTML = `<div class="row1">
                                 <img src="Img/Logo.png" width="272px" height="165px">
@@ -186,6 +221,7 @@ function renderform(){
     reloadDOM()
 }
 
+//-------------------------------------------------------------------------------------------------------------------
 
 
 

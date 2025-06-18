@@ -23,8 +23,6 @@ let user = await supabase        //buscar user
             console.log(userData)
 //------------------------------------------------------
 
-
-
 //Info de todos os users para o admin ver
 //------------------------------------------------------
 let users = await supabase
