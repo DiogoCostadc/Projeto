@@ -76,9 +76,9 @@ let users = await supabase
             .from('User')
             .delete()
             .eq("id", btnid)
-            
+            window.location.reload()
         }
-       window.location.reload()
+       
     })
     div1.appendChild(bt)
     
