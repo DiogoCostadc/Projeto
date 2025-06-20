@@ -187,7 +187,7 @@ function renderform(){
                                 </div>
                                 <div class="pagestyle">
                                     <div class="pagestyle"><hr></div>
-                                    <div class="pagestyle"><h2>Sign</h2></div>
+                                    <div class="pagestyle"><h2>Sign up</h2></div>
                                     <div class="pagestyle"><hr></div>
                                 </div>
                                 <form>
