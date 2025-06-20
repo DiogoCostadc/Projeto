@@ -41,6 +41,21 @@ function CurrentPage(){
                             <label>A melhor app entre a turma toda 100% confiavel</label>
                         </div>
                         <hr>
+                        <div class="spacing">
+                            <div>
+                                <label class="text-maincolor">Planos:</label>
+                            </div>
+                            <div>
+                                <label class="text-maincolor">Sort by: </label>
+                                <select>
+                                    <option>New</option>
+                                    <option>Old</option>
+                                    <option>Last Week</option>
+                                    <option>Last Month</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
                         <div class="list"> <!-- Lista -->
                             <div id="col-1" class="cols"> <!-- Coluna 1 -->
                             </div>

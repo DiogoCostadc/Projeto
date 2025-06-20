@@ -155,3 +155,7 @@ a{
   text-decoration: none;
   font-size:14px;
 }
+.spacing{
+  display: flex;
+  justify-content: space-between;
+}
